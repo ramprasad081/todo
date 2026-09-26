@@ -1,0 +1,25 @@
+{
+  "name": "0.0.1",
+  "version": "1.0.0",
+  "description": "(index) server.js",
+  "license": "ISC",
+  "author": "Ramprasad",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+    "start" : "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.6.0",
+    "mongoose": "^9.10.2",
+    "mongose": "^0.0.2-security"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
