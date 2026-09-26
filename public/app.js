@@ -37,10 +37,16 @@ const apiRequest = async (url, options = {}) => {
     headers,
   });
 
-  const data = await response.json().catch(() => ({}));
+  const contentType = response.headers.get("content-type") || "";
+  const isJson = contentType.includes("application/json");
+  const data = isJson ? await response.json().catch(() => ({})) : {};
 
   if (!response.ok) {
-    throw new Error(data.message || "Something went wrong");
+    throw new Error(data.message || `Request failed (${response.status})`);
+  }
+
+  if (!isJson) {
+    throw new Error("The server returned an unexpected response.");
   }
 
   return data;
