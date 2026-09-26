@@ -121,6 +121,9 @@ import dbConnect from "./config/dbConfig.js";
 import usersRoute from "./routes/users.route.js";
 import tasksRoute from "./routes/tasks.route.js";
 import dotenv from "dotenv";
+
+import * as path from "path";
+const rootpath = process.cwd();
 dotenv.config();
 
 dbConnect();
@@ -130,6 +133,10 @@ const port = 5000
 
 app.use(express.json());
 app.use(express.static("public"));
+
+app.get("/{any}", () => {
+  res.sendfile(path.join(rootpath,"public","index.html"));
+})
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
